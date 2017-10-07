@@ -1,0 +1,12 @@
+This is a simple UDP client-server setup. The udp server will receive a message 
+from the udp client and will simple echo the message to stdout saying that it 
+was received.
+
+To make server and client:
+$ make
+
+To run server:
+$ make server
+
+To run client:
+$ make client
