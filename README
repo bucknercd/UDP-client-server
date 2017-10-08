@@ -1,5 +1,5 @@
-This is a simple UDP client-server setup. The udp server will receive a message 
-from the udp client and will simple echo the message to stdout saying that it 
+This is a simple UDP client-server setup which runs on port 10000. The udp server will receive a message 
+from the udp client and will simply echo the message to stdout saying that it 
 was received.
 
 To make server and client:
