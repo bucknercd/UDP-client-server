@@ -49,9 +49,12 @@ int main(int argc, char **argv) {
         error("Problem reading from STDIN\n");
 
     // send message
-    int bytes_sent = sendto(sockfd, buf, strlen(buf) + 1, 0, (struct sockaddr *)&target, sizeof(struct sockaddr_in));
-    if (bytes_sent < 0)
+    if (sendto(sockfd, buf, strlen(buf) + 1, 0, (struct sockaddr *)&target, sizeof(struct sockaddr_in)) < 0)
         error("---> Problem sending the message\n");
+
+    if (recv(sockfd, buf, BUF_SIZ, 0) < 0)
+        error("---> Problem receiving message");
+    printf("Client received: %s\n", buf);
 
 }
 

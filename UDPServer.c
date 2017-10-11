@@ -44,7 +44,9 @@ int main(int argc, char **argv) {
         int bytes_rec = recvfrom(sockfd, buf, BUF_SIZ, 0, (struct sockaddr *) &client, (socklen_t *)&clientlen);
         if (bytes_rec < 0)
             error("---> Problem receiving message");
-        printf("Received at server: %s\n", buf);
+
+        if (sendto(sockfd, buf, strlen(buf) + 1, 0, (struct sockaddr *)&client, sizeof(struct sockaddr_in)) < 0)
+            perror("---> Problem sending message\n");
     }
 }
 
